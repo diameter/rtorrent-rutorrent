@@ -23,13 +23,10 @@ EXPOSE 80
 RUN useradd -d /home/rtorrent -m -s /bin/bash rtorrent
 
 VOLUME /downloads
-VOLUME /scratch
-RUN mkdir /scratch/.session
-RUN mkdir /scratch/watch
-RUN chown -R rtorrent:rtorrent /scratch
 
 USER rtorrent
-
+RUN mkdir /home/rtorrent/.session
+RUN mkdir /home/rtorrent/watch
 ADD .rtorrent.rc /home/rtorrent/
 
 ENTRYPOINT ["/usr/bin/rtorrent"]
