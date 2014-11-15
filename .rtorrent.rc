@@ -8,16 +8,16 @@ encoding_list = UTF-8
 # Maximum and minimum number of peers to connect to per torrent.
 #min_peers = 40
 #max_peers = 100
-min_peers=1
-max_peers=1000
+min_peers=40
+max_peers=50
 
 # Same as above but for seeding completed torrents (-1 = same as downloading)
-#min_peers_seed = 10
-#max_peers_seed = 50
+min_peers_seed = 10
+max_peers_seed = 50
 
 # Maximum number of simultanious uploads per torrent.
-#max_uploads = 15
-max_uploads=100
+max_uploads = 8
+#max_uploads = 100
 
 # Global upload and download rate in KiB. "0" for unlimited.
 #download_rate = 0
@@ -55,8 +55,7 @@ schedule = watch_directory,5,5,load_start=/home/rtorrent/watch/*.torrent
 #bind = rakshasa.no
 
 # Port range to use for listening.
-#port_range = 49152-65535
-port_range = 49161-49300
+port_range = 49161-49161
 
 # Start opening ports at a random position within the port range.
 port_random = yes
@@ -86,7 +85,7 @@ use_udp_trackers = yes
 # "auto" (start and stop DHT as needed), or "on" (start DHT immediately).
 # The default is "off". For DHT to work, a session directory must be defined.
 # 
-dht = on
+dht = auto
 
 # UDP port to use for DHT. 
 # 

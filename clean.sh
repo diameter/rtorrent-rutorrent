@@ -1,4 +1,3 @@
 #!/bin/bash
-docker rm -f rtorrent
-docker rm -f rutorrent
+docker rm -f rtorrent-rutorrent
 

@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
 set -x
-docker build -t "local/rutorrent:1" ./rutorrent
-docker build -t "local/rtorrent:1" ./rtorrent
+docker build $1 $2 -t "local/rtorrent-rutorrent:1" .
 
