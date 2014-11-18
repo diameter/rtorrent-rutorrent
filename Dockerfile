@@ -1,8 +1,13 @@
 FROM ubuntu
 USER root
 
+# add ffmpeg ppa
+ADD ./jon-severinsson-ffmpeg-trusty.list /etc/apt/sources.list.d/jon-severinsson-ffmpeg-trusty.list
+
 # install
-RUN apt-get update && apt-get install -y rtorrent unzip unrar-free mediainfo curl php5-fpm php5-cli php5-geoip nginx wget supervisor && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y --force-yes rtorrent unzip unrar-free mediainfo curl php5-fpm php5-cli php5-geoip nginx wget ffmpeg supervisor && \
+    rm -rf /var/lib/apt/lists/*
 
 # configure nginx
 ADD rutorrent.nginx /etc/nginx/sites-available/rutorrent
@@ -13,8 +18,9 @@ RUN mkdir -p /var/www/rutorrent && wget http://dl.bintray.com/novik65/generic/ru
     wget http://dl.bintray.com/novik65/generic/plugins-3.6.tar.gz && \
     tar xvf rutorrent-3.6.tar.gz -C /var/www && \
     tar xvf plugins-3.6.tar.gz -C /var/www/rutorrent && \
-    rm *.gz && \
-    chown -R www-data:www-data /var/www/rutorrent
+    rm *.gz
+ADD ./config.php /var/www/rutorrent/conf/
+RUN chown -R www-data:www-data /var/www/rutorrent
 
 # configure rtorrent
 RUN useradd -d /home/rtorrent -m -s /bin/bash rtorrent
