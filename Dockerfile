@@ -25,8 +25,7 @@ RUN chown -R www-data:www-data /var/www/rutorrent
 # configure rtorrent
 RUN useradd -d /home/rtorrent -m -s /bin/bash rtorrent
 ADD .rtorrent.rc /home/rtorrent/
-RUN chown -R rtorrent:rtorrent /home/rtorrent && mkdir -p /home/rtorrent/.session && \
-    mkdir -p /home/rtorrent/watch && chown -R rtorrent:rtorrent /home/rtorrent
+RUN chown -R rtorrent:rtorrent /home/rtorrent
 
 # configure supervisor
 ADD supervisord.conf /etc/supervisor/conf.d/
