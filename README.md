@@ -14,6 +14,7 @@ Exposed:
  - DHT UDP port: 49160
  - Incoming connections port: 49161
  - Downloads volume: /downloads
+ - rtorrent scratch files (watch and .session will be created automatically): /downloads
 
 ----------
 Example, 64-bit:
