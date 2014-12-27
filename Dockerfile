@@ -10,8 +10,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # configure nginx
-ADD rutorrent.nginx /etc/nginx/sites-available/rutorrent
-RUN ln -s /etc/nginx/sites-available/rutorrent /etc/nginx/sites-enabled/ && rm /etc/nginx/sites-available/default
+ADD rutorrent-*.nginx /root/
 
 # download rutorrent
 RUN mkdir -p /var/www/rutorrent && wget http://dl.bintray.com/novik65/generic/rutorrent-3.6.tar.gz && \
@@ -27,10 +26,14 @@ RUN useradd -d /home/rtorrent -m -s /bin/bash rtorrent
 ADD .rtorrent.rc /home/rtorrent/
 RUN chown -R rtorrent:rtorrent /home/rtorrent
 
+# add startup script
+ADD startup.sh /root/
+
 # configure supervisor
 ADD supervisord.conf /etc/supervisor/conf.d/
 
 EXPOSE 80
+EXPOSE 443
 EXPOSE 49160
 EXPOSE 49161
 VOLUME /downloads

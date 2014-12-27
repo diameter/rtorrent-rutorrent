@@ -18,8 +18,14 @@
 ##
 
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server ipv6only=on;
+	listen 443 ssl;
+
+        keepalive_timeout   60;
+        ssl_certificate      /etc/nginx/ssl/nginx.crt;
+        ssl_certificate_key  /etc/nginx/ssl/nginx.key;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers  "RC4:HIGH:!aNULL:!MD5:!kEDH";
+        add_header Strict-Transport-Security 'max-age=604800';
 
 	root /var/www/rutorrent;
 	index index.php index.html index.htm;
@@ -33,6 +39,8 @@ server {
 		try_files $uri $uri/ =404;
 		# Uncomment to enable naxsi on this location
 		# include /etc/nginx/naxsi.rules
+                auth_basic "Restricted";
+                auth_basic_user_file /var/www/rutorrent/.htpasswd;
 	}
 
 	# Only for nginx-naxsi used with nginx-naxsi-ui : process denied requests
@@ -61,6 +69,8 @@ server {
 		fastcgi_pass unix:/var/run/php5-fpm.sock;
 		fastcgi_index index.php;
 		include fastcgi_params;
+                fastcgi_param HTTPS on;
+
 	}
 
 	# deny access to .htaccess files, if Apache's document root
