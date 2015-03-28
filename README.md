@@ -15,6 +15,10 @@ Exposed:
  - Incoming connections port: 49161
  - Downloads volume: /downloads
  - rtorrent scratch files (watch and .session will be created automatically): /downloads
+ - ruTorrent ui config (config will be created automatically): /downloads/config
+
+----------
+ruTorrent UI configuration stored outside the container in /downloads/config to ease the container upgrades.
 
 ----------
 Adding basic auth:
