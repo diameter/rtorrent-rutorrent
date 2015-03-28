@@ -1,6 +1,11 @@
 #!/bin/bash
 
-mkdir /downloads/.session && mkdir /downloads/watch && chown rtorrent:rtorrent /downloads/.session /downloads/watch && cp /downloads/.htpasswd /var/www/rutorrent/
+mkdir /downloads/.session 
+mkdir /downloads/watch 
+chown rtorrent:rtorrent /downloads/.session /downloads/watch 
+cp /downloads/.htpasswd /var/www/rutorrent/
+mkdir /downloads/config 
+chown www-data:www-data /downloads/config
 
 rm -f /downloads/.session/rtorrent.lock
 
@@ -28,7 +33,7 @@ if [ -e /downloads/.htpasswd ]; then
 cp /downloads/.htpasswd /var/www/rutorrent/ && chmod 755 /var/www/rutorrent/.htpasswd && chown www-data:www-data /var/www/rutorrent/.htpasswd
 else
 # disable basic auth
-sed -i 's/auth_basic/#auth_basic/g' /etc/nginx/sites-enabled/rutorrent-tls.nginx
+sed -i 's/auth_basic/#auth_basic/g' /etc/nginx/sites-enabled/$site
 fi
 
 nginx -g "daemon off;"
