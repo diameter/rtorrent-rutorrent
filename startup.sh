@@ -28,7 +28,7 @@ if [ -e /downloads/.htpasswd ]; then
 cp /downloads/.htpasswd /var/www/rutorrent/ && chmod 755 /var/www/rutorrent/.htpasswd && chown www-data:www-data /var/www/rutorrent/.htpasswd
 else
 # disable basic auth
-sed -i 's/auth_basic/#auth_basic/g' /etc/nginx/sites-enabled/rutorrent-tls.nginx
+sed -i 's/auth_basic/#auth_basic/g' /etc/nginx/sites-enabled/$site
 fi
 
 nginx -g "daemon off;"
