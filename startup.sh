@@ -4,8 +4,8 @@ mkdir /downloads/.session
 mkdir /downloads/watch 
 chown rtorrent:rtorrent /downloads/.session /downloads/watch 
 cp /downloads/.htpasswd /var/www/rutorrent/
-mkdir /downloads/config 
-chown www-data:www-data /downloads/config
+mkdir -p /downloads/config/torrents 
+chown -R www-data:www-data /downloads/config
 
 rm -f /downloads/.session/rtorrent.lock
 
