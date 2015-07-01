@@ -2,7 +2,7 @@ FROM ubuntu
 USER root
 
 # add ffmpeg ppa
-ADD ./jon-severinsson-ffmpeg-trusty.list /etc/apt/sources.list.d/jon-severinsson-ffmpeg-trusty.list
+ADD ./ffmpeg-next.list /etc/apt/sources.list.d/ffmpeg-next.list
 
 # install
 RUN apt-get update && \
