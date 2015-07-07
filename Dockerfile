@@ -6,18 +6,16 @@ ADD ./ffmpeg-next.list /etc/apt/sources.list.d/ffmpeg-next.list
 
 # install
 RUN apt-get update && \
-    apt-get install -y --force-yes rtorrent unzip unrar-free mediainfo curl php5-fpm php5-cli php5-geoip nginx wget ffmpeg supervisor && \
+    apt-get install -y --force-yes rtorrent unzip unrar-free mediainfo curl php5-fpm php5-cli php5-geoip nginx wget ffmpeg supervisor git-core && \
     rm -rf /var/lib/apt/lists/*
 
 # configure nginx
 ADD rutorrent-*.nginx /root/
 
 # download rutorrent
-RUN mkdir -p /var/www/rutorrent && wget http://dl.bintray.com/novik65/generic/rutorrent-3.6.tar.gz && \
-    wget http://dl.bintray.com/novik65/generic/plugins-3.6.tar.gz && \
-    tar xvf rutorrent-3.6.tar.gz -C /var/www && \
-    tar xvf plugins-3.6.tar.gz -C /var/www/rutorrent && \
-    rm *.gz
+RUN mkdir -p /var/www/ && cd /var/www && \
+    git clone https://github.com/Novik/ruTorrent.git rutorrent && \
+    rm -rf ./rutorrent/.git*
 ADD ./config.php /var/www/rutorrent/conf/
 RUN chown -R www-data:www-data /var/www/rutorrent
 
