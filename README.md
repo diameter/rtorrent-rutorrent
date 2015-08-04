@@ -1,5 +1,8 @@
-Docker container with rTorrent and ruTorrent
-============================================
+Docker container with rTorrent and ruTorrent (stable and latest from github)
+============================================================================
+
+(To get github's latests pick 64-latest and 32-latest tags)
+----------
 
 Multiple processes inside the container managed by supervisor:
 
