@@ -68,15 +68,15 @@ Example, 64-bit:
 
 Insecure
 
-    $ docker run -dt --name rtorrent-rutorrent -p 8080:80 -p 49160:49160/udp -p 49161:19161 -v ~/test:/downloads diameter/rtorrent-rutorrent:64
+    $ docker run -dt --name rtorrent-rutorrent -p 8080:80 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads diameter/rtorrent-rutorrent:64
 
 Secure
 
-    $ docker run -dt --name rtorrent-rutorrent -p 443:443 -p 49160:49160/udp -p 49161:19161 -v ~/test:/downloads diameter/rtorrent-rutorrent:64
+    $ docker run -dt --name rtorrent-rutorrent -p 443:443 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads diameter/rtorrent-rutorrent:64
 
 Example, map both secure and insecure ports, 32-bit:
 
-    $ docker run -dt --name rtorrent-rutorrent -p 8080:80 -p 443:443 -p 49160:49160/udp -p 49161:19161 -v ~/test:/downloads diameter/rtorrent-rutorrent:32
+    $ docker run -dt --name rtorrent-rutorrent -p 8080:80 -p 443:443 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads diameter/rtorrent-rutorrent:32
 
 ----------
 Access web-interface: enter http://your_host_address:8080 in a browser for insecure version and https://your_host_address for secure version
