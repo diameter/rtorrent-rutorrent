@@ -13,11 +13,11 @@ RUN apt-get update && \
 ADD rutorrent-*.nginx /root/
 
 # download rutorrent
-RUN mkdir -p /var/www/rutorrent && wget http://dl.bintray.com/novik65/generic/rutorrent-3.6.tar.gz && \
-    wget http://dl.bintray.com/novik65/generic/plugins-3.6.tar.gz && \
-    tar xvf rutorrent-3.6.tar.gz -C /var/www && \
-    tar xvf plugins-3.6.tar.gz -C /var/www/rutorrent && \
-    rm *.gz
+RUN mkdir -p /var/www && \
+    wget https://bintray.com/artifact/download/novik65/generic/ruTorrent-3.7.zip && \
+    unzip ruTorrent-3.7.zip && \
+    mv ruTorrent-master /var/www/rutorrent && \
+    rm ruTorrent-3.7.zip
 ADD ./config.php /var/www/rutorrent/conf/
 RUN chown -R www-data:www-data /var/www/rutorrent
 
@@ -39,4 +39,3 @@ EXPOSE 49161
 VOLUME /downloads
 
 CMD ["supervisord"]
-
