@@ -26,6 +26,11 @@ server {
 
 	# Make site accessible from http://localhost/
 	server_name localhost;
+	
+	# Allow larger .torrent files to upload.
+	# If experiencing a "413 Request Entity Too Large" error,
+	# feel free to increase this setting. 
+	client_max_body_size 2M;
 
 	location / {
 		# First attempt to serve request as file, then
