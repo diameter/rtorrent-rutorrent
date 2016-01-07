@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM 32bit/ubuntu:14.04
 USER root
 
 # add ffmpeg ppa
