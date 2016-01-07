@@ -81,6 +81,14 @@ Example, map both secure and insecure ports, 32-bit:
 ----------
 Access web-interface: enter http://your_host_address:8080 in a browser for insecure version and https://your_host_address for secure version
 
+---------
+Exposing rtorrent configuration
+
+It is possible to expose rtorrents .rtorrent.rc configuration file by adding an extra volume argument when creating the container:
+
+   -v /some/location:/home/rtorrent
+
+before starting the container you will have to copy the .rtorrent.rc file contained in this repository to /some/location
 
   [1]: http://wiki.nginx.org/Faq#How_do_I_generate_an_htpasswd_file_without_having_Apache_tools_installed.3F "Nginx FAQ"
 
