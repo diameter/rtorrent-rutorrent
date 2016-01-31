@@ -36,5 +36,10 @@ else
 sed -i 's/auth_basic/#auth_basic/g' /etc/nginx/sites-enabled/$site
 fi
 
+if [ ! -z $MEMORY_LIMIT ]; then
+  sed -i 's/^memory_limit.*//' /etc/php5/fpm/php.ini
+  echo "memory_limit = ${MEMORY_LIMIT}M" >> /etc/php5/fpm/php.ini
+fi
+
 nginx -g "daemon off;"
 
