@@ -92,3 +92,11 @@ before starting the container you will have to copy the .rtorrent.rc file contai
 
   [1]: http://wiki.nginx.org/Faq#How_do_I_generate_an_htpasswd_file_without_having_Apache_tools_installed.3F "Nginx FAQ"
 
+---------
+Increasing memory limit
+
+By providing the MEMORY_LIMIT environment variable when creating the container, the memory limit (in megabytes) for rutorrent can be set.
+
+Example (setting memory limit to 512MB):
+
+    $ docker run -dt --name rtorrent-rutorrent -e MEMORY_LIMIT=512 -p 8080:80 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads diameter/rtorrent-rutorrent:64
