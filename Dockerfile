@@ -21,6 +21,9 @@ RUN mkdir -p /var/www && \
 ADD ./config.php /var/www/rutorrent/conf/
 RUN chown -R www-data:www-data /var/www/rutorrent
 
+# configure diskspace plugin so rutorrent can monitor the volume mounted by docker
+RUN sed -i 's/&$topDirectory/\/downloads/g' /var/www/rutorrent/plugins/diskspace/conf.php
+
 # configure rtorrent
 RUN useradd -d /home/rtorrent -m -s /bin/bash rtorrent
 ADD .rtorrent.rc /home/rtorrent/
