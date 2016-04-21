@@ -1,12 +1,12 @@
-FROM ubuntu
+FROM ubuntu:trusty
 USER root
 
-# add ffmpeg ppa
-ADD ./ffmpeg-next.list /etc/apt/sources.list.d/ffmpeg-next.list
+# add extra sources 
+ADD ./extra.list /etc/apt/sources.list.d/extra.list
 
 # install
 RUN apt-get update && \
-    apt-get install -y --force-yes rtorrent unzip unrar-free mediainfo curl php5-fpm php5-cli php5-geoip nginx wget ffmpeg supervisor && \
+    apt-get install -y --force-yes rtorrent unzip unrar mediainfo curl php5-fpm php5-cli php5-geoip nginx wget ffmpeg supervisor && \
     rm -rf /var/lib/apt/lists/*
 
 # configure nginx
