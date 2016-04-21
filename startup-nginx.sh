@@ -1,19 +1,18 @@
 #!/bin/bash
 
-mkdir /downloads/.session 
-mkdir /downloads/watch 
-chown rtorrent:rtorrent /downloads/.session /downloads/watch 
-cp /downloads/.htpasswd /var/www/rutorrent/
-mkdir -p /downloads/config/torrents 
-chown -R www-data:www-data /downloads/config
+set -x
 
-rm -f /downloads/.session/rtorrent.lock
+chown -R www-data:www-data /var/www/rutorrent
+cp /downloads/.htpasswd /var/www/rutorrent/
+mkdir -p /downloads/.rutorrent/torrents
+chown -R www-data:www-data /downloads/.rutorrent
 
 rm -f /etc/nginx/sites-enabled/*
 
 rm -rf /etc/nginx/ssl
 
 rm /var/www/rutorrent/.htpasswd
+
 
 # Basic auth enabled by default
 site=rutorrent-basic.nginx

@@ -19,15 +19,9 @@ RUN mkdir -p /var/www && \
     mv ruTorrent-master /var/www/rutorrent && \
     rm ruTorrent-3.7.zip
 ADD ./config.php /var/www/rutorrent/conf/
-RUN chown -R www-data:www-data /var/www/rutorrent
 
-# configure rtorrent
-RUN useradd -d /home/rtorrent -m -s /bin/bash rtorrent
-ADD .rtorrent.rc /home/rtorrent/
-RUN chown -R rtorrent:rtorrent /home/rtorrent
-
-# add startup script
-ADD startup.sh /root/
+# add startup scripts and configs
+ADD startup-rtorrent.sh startup-nginx.sh startup-php.sh .rtorrent.rc /root/
 
 # configure supervisor
 ADD supervisord.conf /etc/supervisor/conf.d/
@@ -39,3 +33,4 @@ EXPOSE 49161
 VOLUME /downloads
 
 CMD ["supervisord"]
+
