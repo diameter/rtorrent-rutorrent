@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu
 USER root
 
 # add extra sources 
@@ -26,7 +26,7 @@ ADD startup-rtorrent.sh startup-nginx.sh startup-php.sh .rtorrent.rc /root/
 # configure supervisor
 ADD supervisord.conf /etc/supervisor/conf.d/
 
-EXPOSE 80,443,49160,49161
+EXPOSE 80 443 49160 49161
 VOLUME /downloads
 
 CMD ["supervisord"]
