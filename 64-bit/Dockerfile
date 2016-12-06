@@ -2,7 +2,7 @@ FROM ubuntu
 USER root
 
 # add extra sources 
-ADD ../extra.list /etc/apt/sources.list.d/extra.list
+ADD ./extra.list /etc/apt/sources.list.d/extra.list
 
 # install
 RUN apt-get update && \
