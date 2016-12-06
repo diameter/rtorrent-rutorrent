@@ -3,17 +3,17 @@ Docker container with rTorrent and ruTorrent (stable and latest from github)
 
 Tags:
  
- - rtorrent-rutorrent:64 aka rtorrent-rutorrent:latest
- - rtorrent-rutorrent:64-latest
- - rtorrent-rutorrent:32
- - rtorrent-rutorrent:32-latest
+ - rtorrent-rutorrent:stable
+ - rtorrent-rutorrent:latest
+ - rtorrent-rutorrent:stable-32
+ - rtorrent-rutorrent:latest-32
 
 ----------
 
 Multiple processes inside the container managed by supervisord:
 
 - nginx
-- php5-fpm
+- php-fpm
 - rtorrent
 
 ----------
@@ -27,7 +27,7 @@ Exposed:
  - external rtorrent config (.rtorrent/.rtorrent.rc): /downloads
  - external ruTorrent ui config (config will be created automatically): /downloads/.rutorrent
  - rtorrent uid and gid: USR_ID and GRP_ID env vars, default is 1000:1000
- - php5-fpm memory limit: PHP_MEM env var, default is 256M
+ - php-fpm memory limit: PHP_MEM env var, default is 256M
 
 ----------
 Adding basic auth:
@@ -73,21 +73,21 @@ Example, 64-bit:
 
 Insecure
 
-    $ docker run -dt --name rtorrent-rutorrent -p 8080:80 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads diameter/rtorrent-rutorrent:64
+    $ docker run -dt --name rtorrent-rutorrent -p 8080:80 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads diameter/rtorrent-rutorrent:latest
 
 Secure
 
-    $ docker run -dt --name rtorrent-rutorrent -p 443:443 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads diameter/rtorrent-rutorrent:64
+    $ docker run -dt --name rtorrent-rutorrent -p 443:443 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads diameter/rtorrent-rutorrent:latest
 
 Example, map both secure and insecure ports, 32-bit:
 
-    $ docker run -dt --name rtorrent-rutorrent -p 8080:80 -p 443:443 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads diameter/rtorrent-rutorrent:32
+    $ docker run -dt --name rtorrent-rutorrent -p 8080:80 -p 443:443 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads diameter/rtorrent-rutorrent:latest-32
 
 ----------
 Access web-interface: enter http://your_host_address:8080 in a browser for insecure version and https://your_host_address for secure version
 
 ----------
-Example, specify rtorrent gid and uid, and increase php5-fpm memory limit:
+Example, specify rtorrent gid and uid, and increase php-fpm memory limit:
 
     $ docker run -dt --name rtorrent-rutorrent -p 8080:80 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads -e USR_ID=11000 -e GRP_ID=22000 -e PHP_MEM=1024M diameter/rtorrent-rutorrent:64
 
