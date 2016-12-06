@@ -6,7 +6,7 @@ ADD ./extra.list /etc/apt/sources.list.d/extra.list
 
 # install
 RUN apt-get update && \
-    apt-get install -y --force-yes rtorrent unzip unrar mediainfo curl php5-fpm php5-cli php5-geoip nginx wget ffmpeg supervisor && \
+    apt-get install -y --force-yes rtorrent unzip unrar mediainfo curl php-fpm php-cli php-geoip nginx wget ffmpeg supervisor && \
     rm -rf /var/lib/apt/lists/*
 
 # configure nginx
