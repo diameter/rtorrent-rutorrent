@@ -2,7 +2,7 @@ FROM ubuntu
 USER root
 
 # add extra sources 
-ADD ./extra.list /etc/apt/sources.list.d/extra.list
+ADD ../extra.list /etc/apt/sources.list.d/extra.list
 
 # install
 RUN apt-get update && \
@@ -10,7 +10,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # configure nginx
-ADD rutorrent-*.nginx /root/
+ADD ../rutorrent-*.nginx /root/
 
 # download rutorrent
 RUN mkdir -p /var/www && \
@@ -18,13 +18,13 @@ RUN mkdir -p /var/www && \
     unzip ruTorrent-3.7.zip && \
     mv ruTorrent-master /var/www/rutorrent && \
     rm ruTorrent-3.7.zip
-ADD ./config.php /var/www/rutorrent/conf/
+ADD ../config.php /var/www/rutorrent/conf/
 
 # add startup scripts and configs
-ADD startup-rtorrent.sh startup-nginx.sh startup-php.sh .rtorrent.rc /root/
+ADD ../startup-rtorrent.sh ../startup-nginx.sh ../startup-php.sh .rtorrent.rc /root/
 
 # configure supervisor
-ADD supervisord.conf /etc/supervisor/conf.d/
+ADD ../supervisord.conf /etc/supervisor/conf.d/
 
 EXPOSE 80 443 49160 49161
 VOLUME /downloads
