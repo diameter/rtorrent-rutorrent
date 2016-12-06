@@ -89,7 +89,7 @@ Access web-interface: enter http://your_host_address:8080 in a browser for insec
 ----------
 Example, specify rtorrent gid and uid, and increase php-fpm memory limit:
 
-    $ docker run -dt --name rtorrent-rutorrent -p 8080:80 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads -e USR_ID=11000 -e GRP_ID=22000 -e PHP_MEM=1024M diameter/rtorrent-rutorrent:64
+    $ docker run -dt --name rtorrent-rutorrent -p 8080:80 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads -e USR_ID=11000 -e GRP_ID=22000 -e PHP_MEM=1024M diameter/rtorrent-rutorrent:stable
 
 ----------
 Upgrade from older container version, move rtorrent scratch files and rutorrent configs to the new locations:
