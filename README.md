@@ -1,13 +1,17 @@
 Docker container with rTorrent and ruTorrent (stable and latest from github)
 ============================================================================
 
-Tags:
+Ubuntu-based tags:
  
  - rtorrent-rutorrent:stable
  - rtorrent-rutorrent:latest
  - rtorrent-rutorrent:stable-32
  - rtorrent-rutorrent:latest-32
- - rtorrent-rutorrent:stable-alpine (no mediainfo/geoip)
+
+Alpine-based tags (no mediainfo and geoip yet)
+
+ - rtorrent-rutorrent:stable-alpine
+ - rtorrent-rutorrent:stable-alpine-32
 
 ----------
 
