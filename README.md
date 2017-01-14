@@ -11,7 +11,9 @@ Ubuntu-based tags:
 Alpine-based tags (no mediainfo and geoip yet):
 
  - rtorrent-rutorrent:stable-alpine
+ - rtorrent-rutorrent:latest-alpine
  - rtorrent-rutorrent:stable-alpine-32
+ - rtorrent-rutorrent:latest-alpine-32
 
 ----------
 
