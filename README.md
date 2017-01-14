@@ -7,6 +7,7 @@ Tags:
  - rtorrent-rutorrent:latest
  - rtorrent-rutorrent:stable-32
  - rtorrent-rutorrent:latest-32
+ - rtorrent-rutorrent:stable-alpine (no mediainfo/geoip)
 
 ----------
 
@@ -53,7 +54,7 @@ Generate a self-signed certificate:
 
     $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx.key -out nginx.crt
 
-Nginx TLS is configured as follwoing:
+Nginx TLS is configured as following:
 
     keepalive_timeout   60;
     ssl_ciphers "AES128+EECDH:AES128+EDH";
