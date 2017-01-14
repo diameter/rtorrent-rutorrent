@@ -8,7 +8,7 @@ Ubuntu-based tags:
  - rtorrent-rutorrent:stable-32
  - rtorrent-rutorrent:latest-32
 
-Alpine-based tags (no mediainfo and geoip yet)
+Alpine-based tags (no mediainfo and geoip yet):
 
  - rtorrent-rutorrent:stable-alpine
  - rtorrent-rutorrent:stable-alpine-32
