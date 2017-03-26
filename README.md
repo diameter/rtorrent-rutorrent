@@ -36,6 +36,7 @@ Exposed:
  - rtorrent uid and gid: USR_ID and GRP_ID env vars, default is 1000:1000
  - php-fpm memory limit: PHP_MEM env var, default is 256M
  - disable IPv6 binding in nginx: set env var NOIPV6=1, default is not set
+ - alternative webroot: WEBROOT env var, defailt is /
 
 ----------
 Adding basic auth:
