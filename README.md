@@ -22,6 +22,7 @@ Multiple processes inside the container managed by supervisord:
 - nginx
 - php-fpm
 - rtorrent
+- irssi
 
 ----------
 Exposed:
@@ -31,6 +32,7 @@ Exposed:
  - Incoming connections port: 49161
  - Downloads volume: /downloads
  - rtorrent scratch files (.rtorrent/{watch|session} will be created automatically): /downloads
+ - autodl-irssi config files are created automatically: /downloads/.autodl
  - external rtorrent config (.rtorrent/.rtorrent.rc): /downloads
  - external ruTorrent ui config (config will be created automatically): /downloads/.rutorrent
  - rtorrent uid and gid: USR_ID and GRP_ID env vars, default is 1000:1000
