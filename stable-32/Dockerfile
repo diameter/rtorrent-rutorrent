@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y git && \
     mv ruTorrent-master /var/www/rutorrent && \
     rm ruTorrent-3.7.zip && \
     cp ./a/config.php /var/www/rutorrent/conf/ && \
-    cp ./a/startup-rtorrent.sh ./a/startup-nginx.sh ./a/startup-php.sh ./a/.rtorrent.rc /root/ && \
+    cp ./a/startup-rtorrent.sh ./a/startup-nginx.sh ./a/startup-php.sh ./a/startup-irssi.sh ./a/.rtorrent.rc /root/ && \
     cp ./a/supervisord.conf /etc/supervisor/conf.d/
 
 EXPOSE 80 443 49160 49161
