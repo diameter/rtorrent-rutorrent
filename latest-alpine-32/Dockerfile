@@ -1,8 +1,8 @@
-FROM i386/alpine:3.3
+FROM i386/alpine:3.6
 USER root
 
 # mediainfo and php-geoip left out
-RUN apk add --no-cache rtorrent unzip unrar curl php-fpm php-cli php-json nginx wget ffmpeg supervisor git && \
+RUN apk add --no-cache rtorrent unzip unrar curl php7-fpm php7 php7-json nginx wget ffmpeg supervisor git sox && \
     git clone -b alpine https://github.com/diameter/rtorrent-rutorrent-shared.git a && \
     mkdir -p /var/www && cd /var/www && \
     git clone https://github.com/Novik/ruTorrent.git rutorrent && \
@@ -13,7 +13,7 @@ RUN apk add --no-cache rtorrent unzip unrar curl php-fpm php-cli php-json nginx 
     cp ./a/supervisord.conf /etc/supervisor.d/supervisord.ini && \
     mkdir -p /etc/nginx/sites-enabled && \
     cp ./a/nginx.conf /etc/nginx/ && \
-    cp ./a/php-fpm.conf /etc/php/ && \
+    cp ./a/php-fpm.conf /etc/php7/ && \
     cp ./a/rutorrent-*.nginx /root/
 
 EXPOSE 80 443 49160 49161

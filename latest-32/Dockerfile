@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y git && \
     git clone https://github.com/diameter/rtorrent-rutorrent-shared.git a && \
     cp ./a/extra.list /etc/apt/sources.list.d/extra.list && \
     apt-get update && \
-    apt-get install -y rtorrent unzip unrar mediainfo curl php-fpm php-cli php-geoip nginx wget ffmpeg supervisor php-xml libarchive-zip-perl libjson-perl libxml-libxml-perl irssi && \
+    apt-get install -y rtorrent unzip unrar mediainfo curl php-fpm php-cli php-geoip nginx wget ffmpeg supervisor php-xml libarchive-zip-perl libjson-perl libxml-libxml-perl irssi sox && \
     rm -rf /var/lib/apt/lists/* && \
     cp ./a/rutorrent-*.nginx /root/ && \
     mkdir -p /var/www && cd /var/www && \
@@ -13,7 +13,9 @@ RUN apt-get update && apt-get install -y git && \
     rm -rf ./rutorrent/.git* && cd / && \
     cp ./a/config.php /var/www/rutorrent/conf/ && \
     cp ./a/startup-rtorrent.sh ./a/startup-nginx.sh ./a/startup-php.sh ./a/.rtorrent.rc ./a/startup-irssi.sh /root/ && \
-    cp ./a/supervisord.conf /etc/supervisor/conf.d/
+    cp ./a/supervisord.conf /etc/supervisor/conf.d/ && \
+    sed -i 's/\/var\/log/\/downloads\/\.log/g' /etc/nginx/nginx.conf
+
 
 EXPOSE 80 443 49160 49161
 VOLUME /downloads

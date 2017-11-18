@@ -8,7 +8,7 @@ Ubuntu-based tags:
  - rtorrent-rutorrent:stable-32
  - rtorrent-rutorrent:latest-32
 
-Alpine-based tags (no mediainfo and geoip yet):
+Alpine-based tags (no mediainfo yet):
 
  - rtorrent-rutorrent:stable-alpine
  - rtorrent-rutorrent:latest-alpine
@@ -27,14 +27,15 @@ Multiple processes inside the container managed by supervisord:
 ----------
 Exposed:
 
- - Web UI ports: 80 and 443
- - DHT UDP port: 49160
- - Incoming connections port: 49161
+ - Web UI ports: 80 and 443 (can be remapped in 'docker run')
+ - DHT UDP port: 49160 (can be remapped)
+ - Incoming connections port: 49161 (can be remapped)
  - Downloads volume: /downloads
  - rtorrent scratch files (.rtorrent/{watch|session} will be created automatically): /downloads
  - autodl-irssi config files are created automatically: /downloads/.autodl
  - external rtorrent config (.rtorrent/.rtorrent.rc): /downloads
  - external ruTorrent ui config (config will be created automatically): /downloads/.rutorrent
+ - external nginx and rtorrent logs: /downloads/.log/
  - rtorrent uid and gid: USR_ID and GRP_ID env vars, default is 1000:1000
  - php-fpm memory limit: PHP_MEM env var, default is 256M
  - disable IPv6 binding in nginx: set env var NOIPV6=1, default is not set
@@ -101,15 +102,6 @@ Access web-interface: enter http://your_host_address:8080 in a browser for insec
 Example, specify rtorrent gid and uid, and increase php-fpm memory limit:
 
     $ docker run -dt --name rtorrent-rutorrent -p 8080:80 -p 49160:49160/udp -p 49161:49161 -v ~/test:/downloads -e USR_ID=11000 -e GRP_ID=22000 -e PHP_MEM=1024M diameter/rtorrent-rutorrent:stable
-
-----------
-Upgrade from older container version, move rtorrent scratch files and rutorrent configs to the new locations:
-
-| Old | New |
-| --- | --- |
-| /downloads/.session | /downloads/.rtorrent/session |
-| /downloads/watch | /downloads/.rtorrent/watch |
-| /downloads/config | /downloads/.rutorrent |
 
 ----------
 
