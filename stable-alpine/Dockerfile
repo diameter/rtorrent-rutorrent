@@ -1,8 +1,8 @@
-FROM alpine:3.6
+FROM alpine:3.8
 USER root
 
-# mediainfo and php-geoip left out
-RUN apk add --no-cache rtorrent unzip unrar curl php7-fpm php7 php7-json nginx wget ffmpeg supervisor git sox && \
+# php-geoip left out
+RUN apk add --no-cache rtorrent mediainfo unzip unrar curl php7-fpm php7 php7-json nginx wget ffmpeg supervisor git sox && \
     git clone -b alpine https://github.com/diameter/rtorrent-rutorrent-shared.git a && \
     mkdir -p /var/www && \
     wget --no-check-certificate https://github.com/Novik/ruTorrent/archive/v3.8.tar.gz && \
@@ -22,4 +22,3 @@ EXPOSE 80 443 49160 49161
 VOLUME /downloads
 
 CMD ["supervisord"]
-
