@@ -1,4 +1,4 @@
-FROM ioft/i386-ubuntu:xenial
+FROM i386/ubuntu
 USER root
 
 RUN apt-get update && apt-get install -y git && \
