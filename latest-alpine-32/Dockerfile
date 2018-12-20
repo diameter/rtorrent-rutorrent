@@ -2,7 +2,7 @@ FROM i386/alpine:3.8
 USER root
 
 # php-geoip left out
-RUN apk add --no-cache rtorrent mediainfo unzip unrar curl php7-fpm php7 php7-json nginx wget ffmpeg supervisor git sox && \
+RUN apk add --no-cache rtorrent mediainfo unzip unrar curl php7-fpm php7 php7-json php7-zip nginx wget ffmpeg supervisor git sox && \
     git clone -b alpine https://github.com/diameter/rtorrent-rutorrent-shared.git a && \
     mkdir -p /var/www && cd /var/www && \
     git clone https://github.com/Novik/ruTorrent.git rutorrent && \
