@@ -8,7 +8,7 @@ Ubuntu-based tags:
  - rtorrent-rutorrent:stable-32
  - rtorrent-rutorrent:latest-32
 
-Alpine-based tags (no mediainfo yet):
+Alpine-based tags (no irssi-dl yet):
 
  - rtorrent-rutorrent:stable-alpine
  - rtorrent-rutorrent:latest-alpine

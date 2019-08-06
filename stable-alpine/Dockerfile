@@ -1,14 +1,15 @@
-FROM alpine:3.8
+FROM alpine:3.10
 USER root
 
 # php-geoip left out
-RUN apk add --no-cache rtorrent mediainfo unzip unrar curl php7-fpm php7 php7-json nginx wget ffmpeg supervisor git sox && \
+RUN apk add --no-cache rtorrent mediainfo unzip unrar curl php7-fpm php7 php7-json nginx wget ffmpeg supervisor git sox irssi py-pip && \
+    pip install cfscrape && \
     git clone -b alpine https://github.com/diameter/rtorrent-rutorrent-shared.git a && \
     mkdir -p /var/www && \
-    wget --no-check-certificate https://github.com/Novik/ruTorrent/archive/v3.8.tar.gz && \
-    tar xzf v3.8.tar.gz && \
-    mv ruTorrent-3.8 /var/www/rutorrent && \
-    rm v3.8.tar.gz && \
+    wget --no-check-certificate https://github.com/Novik/ruTorrent/archive/v3.9.tar.gz && \
+    tar xzf v3.9.tar.gz && \
+    mv ruTorrent-3.9 /var/www/rutorrent && \
+    rm v3.9.tar.gz && \
     cp ./a/config.php /var/www/rutorrent/conf/ && \
     cp ./a/startup-rtorrent.sh ./a/startup-nginx.sh ./a/startup-php.sh ./a/.rtorrent.rc /root/ && \
     mkdir -p /etc/supervisor.d && \
