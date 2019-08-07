@@ -3,6 +3,9 @@ USER root
 
 # php-geoip left out
 RUN apk add --no-cache rtorrent mediainfo unzip unrar curl php7-fpm php7 php7-json php7-zip nginx wget ffmpeg supervisor git sox irssi && \
+    apk add --no-cache py-pip gcc g++ python-dev musl-dev libffi-dev openssl-dev && \
+    pip install cloudscraper && \
+    apk del py-pip gcc g++ python-dev musl-dev libffi-dev openssl-dev && \
     git clone -b alpine https://github.com/diameter/rtorrent-rutorrent-shared.git a && \
     mkdir -p /var/www && cd /var/www && \
     git clone https://github.com/Novik/ruTorrent.git rutorrent && \
